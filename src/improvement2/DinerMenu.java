@@ -46,6 +46,7 @@ public class DinerMenu extends Menu {
 		return menuItems;
 	}
 
+	@Override
 	public Iterator createIterator() {
 		return new DinerMenuIterator(menuItems);
 	}

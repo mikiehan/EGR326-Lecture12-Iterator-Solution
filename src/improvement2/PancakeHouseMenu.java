@@ -49,6 +49,7 @@ public class PancakeHouseMenu extends Menu {
 		return "Objectville Pancake House Menu";
 	}
 
+	@Override
 	public Iterator createIterator() {
 		return menuItems.iterator(); //provided by Java
 	}

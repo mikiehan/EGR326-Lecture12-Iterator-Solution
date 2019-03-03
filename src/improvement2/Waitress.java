@@ -3,11 +3,14 @@ package improvement2;
 /*
  * Implement below code WITHOUT changing internal implementation of DinerMenu and PancakeHouseMenu
  */
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+//Following "Program to an Interface, not to an Implementation"
+//WAITRESS does not have to know therefore does not know
+//the specific implementation of Menu
+//This results in much cleaner and elegant code, easier to maintain
 public class Waitress {
 	private List<Menu> menuList;
 
