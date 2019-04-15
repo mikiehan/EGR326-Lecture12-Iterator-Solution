@@ -1,0 +1,69 @@
+package improvement3;
+
+/*
+ * Implement below code WITHOUT changing internal implementation of DinerMenu and PancakeHouseMenu
+ */
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+//Following "Program to an Interface, not to an Implementation"
+//WAITRESS does not have to know therefore does not know
+//the specific implementation of Menu
+//This results in much cleaner and elegant code, easier to maintain
+public class Waitress {
+	private List<Menu> menuList;
+
+	public Waitress(List<Menu> menuList) {
+		this.menuList = new ArrayList<>(menuList);
+	}
+
+	// prints ALL menus (both breakfast and lunch)
+	public void printMenu() {
+		// implement here
+		for(Menu m : menuList) {
+			printMenu(m.iterator());
+		}
+	}
+
+	// takes care of printing given the iterator
+	public void printMenu(Iterator iter) {
+		// implement here
+		while(iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+	}
+
+	// prints all vegetarian menu from both breakfast and lunch
+	public void printVegetarianMenu() {
+		for(Menu m : menuList) {
+			printVegetarianMenu(m.iterator());
+		}
+	}
+
+	private void printVegetarianMenu(Iterator iter){
+		while(iter.hasNext()) {
+			MenuItem m = (MenuItem) iter.next();
+			if(m.isVegetarian())
+				System.out.println(m);
+		}
+	}
+
+	// returns a particular name menu is vegetarian or not
+	public boolean isItemVegetarian(String name) {
+		for(Menu m : menuList) {
+			if (isItemVegetarian(m.iterator(), name)) return true;
+		}
+		return false;
+	}
+
+	private boolean isItemVegetarian(Iterator iter, String name){
+		while(iter.hasNext()) {
+			MenuItem oneMenu = (MenuItem) iter.next();
+			if(oneMenu.getName().equals(name) && oneMenu.isVegetarian())
+				return true;
+		}
+		return false;
+	}
+}
